@@ -1,5 +1,6 @@
 import os
-import webbrowser
+import pyjokes
+
 print("This is done bro again")  # Prints a message
 
 def create_hello_file(filename):
@@ -9,10 +10,10 @@ def create_hello_file(filename):
 create_hello_file("hello.txt")    # Creates the file
 print("File 'hello.txt' created with message.")
 
-def open_vid():
- webbrowser.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
- print('Video oepned')
-open_vid()
+
+print("[+] Telling you a programmer joke:\n")
+print(pyjokes.get_joke(language='en', category='programming'))
+
 
 #def shutdown_windows():
     #print('shutting down bro')
