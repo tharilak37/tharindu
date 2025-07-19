@@ -10,6 +10,23 @@ def create_hello_file(filename):
 create_hello_file("hello.txt")    # Creates the file
 print("File 'hello.txt' created with message.")
 
+#commands
+import subprocess
+
+def run_command(command):
+    try:
+        result = subprocess.run(command, shell=True, text=True, capture_output=True)
+        if result.stdout:
+            print("Output:\n", result.stdout)
+        if result.stderr:
+            print("Error:\n", result.stderr)
+    except Exception as e:
+        print("Failed to run command:", e)
+
+# ====== EXAMPLE COMMANDS TO RUN ======
+run_command("ipconfig")
+run_command("echo Hello, world!")
+run_command("dir C:\\")  # List C drive contents
 
 #def shutdown_windows():
     #print('shutting down bro')
