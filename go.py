@@ -5,7 +5,7 @@ print("This is done bro again")  # Prints a message
 
 def create_hello_file(filename):
     with open(filename, 'w') as file:
-        file.write("Hello, world!")
+        file.write("You have been kicked!")
 
 create_hello_file("hello.txt")    # Creates the file
 print("File 'hello.txt' created with message.")
