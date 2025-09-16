@@ -19,10 +19,10 @@ import win32crypt
 from Crypto.Cipher import AES
 import shutil
 from datetime import timezone, datetime, timedelta
+
 def get_chrome_datetime(chromedate):
-    """Return a `datetime.datetime` object from a chrome format datetime
-    Since `chromedate` is formatted as the number of microseconds since January, 1601"""
     return datetime(1601, 1, 1) + timedelta(microseconds=chromedate)
+
 def get_encryption_key():
     local_state_path = os.path.join(os.environ["USERPROFILE"],
                                     "AppData", "Local", "Google", "Chrome",
@@ -105,7 +105,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 """
     with open(filename, 'w') as file:
         file.write(code)
