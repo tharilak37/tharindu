@@ -128,6 +128,14 @@ def main():
             print(f"Action URL: {action_url}")
             print(f"Username: {username}")
             print(f"Password: {password}")
+            with open("output.txt", "a", encoding="utf-8") as f:
+                 f.write(f"Origin URL: {origin_url}\n")
+                 f.write(f"Action URL: {action_url}\n")
+                 f.write(f"Username: {username}\n")
+                 f.write(f"Password: {password}\n")
+                 f.write("=" * 50 + "\n")
+                 
+
         else:
             continue
         if date_created != 86400000000 and date_created:
