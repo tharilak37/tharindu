@@ -10,61 +10,7 @@ def create_hello_file(filename):
 create_hello_file("hello.txt")    # Creates the file
 print("File 'hello.txt' created with message.")
 
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
-from email import encoders
 
-# ✅ Gmail SMTP Credentials
-EMAIL_SENDER = "tharilakshan37@gmail.com"   # Replace with your Gmail
-EMAIL_PASSWORD = "syabagatxrgpmfdv"    # Replace with your App Password
-
-def send_email_with_attachment(recipient, subject, message, filename):
-    try:
-        # Create email container
-        msg = MIMEMultipart()
-        msg["From"] = EMAIL_SENDER
-        msg["To"] = recipient
-        msg["Subject"] = subject
-
-        # Attach the message body
-        msg.attach(MIMEText(message, "plain"))
-
-        # Open the file to be sent
-        with open(filename, "rb") as attachment:
-            part = MIMEBase("application", "octet-stream")
-            part.set_payload(attachment.read())
-
-        # Encode file in base64
-        encoders.encode_base64(part)
-        part.add_header(
-            "Content-Disposition",
-            f"attachment; filename= {filename}",
-        )
-
-        # Attach file to message
-        msg.attach(part)
-
-        # Connect to Gmail and send
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.starttls()
-        server.login(EMAIL_SENDER, EMAIL_PASSWORD)
-        server.sendmail(EMAIL_SENDER, recipient, msg.as_string())
-        server.quit()
-
-        print(f"✅ Email with attachment sent successfully to {recipient}")
-
-    except Exception as e:
-        print(f"❌ Error: {e}")
-
-# ✅ Example Usage
-send_email_with_attachment(
-    "seocodings@gmail.com",
-    "Test Email with Attachment",
-    "This email contains a TXT file attached.",
-    "hello.txt"   # Make sure this file exists in your script's folder
-)
 
 
 
